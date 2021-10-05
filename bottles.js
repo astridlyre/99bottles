@@ -24,6 +24,16 @@ class BottleVerse extends IterativeSongVerse {
     super(number)
   }
 
+  lyrics() {
+    const bottleNumber = BottleNumber.of(this.number)
+    return (
+      capitalize(`${bottleNumber} of beer on the wall, `) +
+      `${bottleNumber} of beer.\n` +
+      `${bottleNumber.action()}, ` +
+      `${bottleNumber.successor()} of beer on the wall.\n`
+    )
+  }
+
   static get MAX_VERSES() {
     return MAX_BOTTLE_VERSES
   }
@@ -33,12 +43,6 @@ class BottleVerse extends IterativeSongVerse {
   }
 
   static lyrics(number) {
-    const bottleNumber = BottleNumber.of(number)
-    return (
-      capitalize(`${bottleNumber} of beer on the wall, `) +
-      `${bottleNumber} of beer.\n` +
-      `${bottleNumber.action()}, ` +
-      `${bottleNumber.successor()} of beer on the wall.\n`
-    )
+    return BottleVerse.of(number).lyrics()
   }
 }

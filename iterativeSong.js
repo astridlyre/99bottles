@@ -58,10 +58,11 @@ export const IterativeSongVerse = (function init() {
     }
 
     toString() {
-      if (typeof this.prototype.constructor.lyrics !== 'function') {
-        throw new TypeError('Subclass must implement lyrics()')
-      }
       return this.prototype.constructor.lyrics(this.number)
+    }
+
+    lyrics() {
+      throw new Error('lyrics() must be implemented by subclass')
     }
 
     get number() {
