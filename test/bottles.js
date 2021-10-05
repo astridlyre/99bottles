@@ -1,9 +1,10 @@
+/*eslint func-names: ["error", "never"]*/
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import { Bottles } from '../bottles.js'
 
-describe('Bottles', () => {
-  it('the first verse', () => {
+describe('Bottles', function () {
+  it('Produces the starting verse', function () {
     const expected =
       '99 bottles of beer on the wall, ' +
       '99 bottles of beer.\n' +
@@ -12,7 +13,7 @@ describe('Bottles', () => {
     expect(new Bottles().verse(99)).to.equal(expected)
   })
 
-  it('another verse', () => {
+  it('Produces another verse', function () {
     const expected =
       '3 bottles of beer on the wall, ' +
       '3 bottles of beer.\n' +
@@ -21,7 +22,7 @@ describe('Bottles', () => {
     expect(new Bottles().verse(3)).to.equal(expected)
   })
 
-  it('verse 2', () => {
+  it('Produces verse 2', function () {
     const expected =
       '2 bottles of beer on the wall, ' +
       '2 bottles of beer.\n' +
@@ -30,7 +31,7 @@ describe('Bottles', () => {
     expect(new Bottles().verse(2)).to.equal(expected)
   })
 
-  it('verse 1', () => {
+  it('Produces verse 1', function () {
     const expected =
       '1 bottle of beer on the wall, ' +
       '1 bottle of beer.\n' +
@@ -39,7 +40,7 @@ describe('Bottles', () => {
     expect(new Bottles().verse(1)).to.equal(expected)
   })
 
-  it('verse 0', () => {
+  it('Produces verse 0', function () {
     const expected =
       'No more bottles of beer on the wall, ' +
       'no more bottles of beer.\n' +
@@ -48,7 +49,7 @@ describe('Bottles', () => {
     expect(new Bottles().verse(0)).to.equal(expected)
   })
 
-  it('verses 6 and 7', () => {
+  it('Produces verses 6 & 7', function () {
     const expected =
       '7 bottles of beer on the wall, ' +
       '7 bottles of beer.\n' +
@@ -62,7 +63,7 @@ describe('Bottles', () => {
     expect(new Bottles().verses(7, 6)).to.equal(expected)
   })
 
-  it('a couple verses', () => {
+  it('Produces a couple of verses', function () {
     const expected =
       '99 bottles of beer on the wall, ' +
       '99 bottles of beer.\n' +
@@ -76,7 +77,7 @@ describe('Bottles', () => {
     expect(new Bottles().verses(99, 98)).to.equal(expected)
   })
 
-  it('a few verses', () => {
+  it('Produces the final few verses', function () {
     const expected =
       '2 bottles of beer on the wall, ' +
       '2 bottles of beer.\n' +
@@ -95,7 +96,7 @@ describe('Bottles', () => {
     expect(new Bottles().verses(2, 0)).to.equal(expected)
   })
 
-  it('the whole song', () => {
+  it('Produces the full song', function () {
     const expected = `99 bottles of beer on the wall, 99 bottles of beer.
 Take one down and pass it around, 98 bottles of beer on the wall.
 

@@ -69,7 +69,7 @@ export const IterativeSongVerse = (function init() {
     }
 
     static of(number) {
-      return new IterativeSongVerse(number)
+      return new this.prototype.constructor(number)
     }
 
     static get MAX_VERSES() {

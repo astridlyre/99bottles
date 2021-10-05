@@ -63,6 +63,10 @@ export const BottleNumber = (function init() {
     static unregister(candidate) {
       BottleNumber[registry].delete(candidate)
     }
+
+    static get MAX_BOTTLES() {
+      return MAX_BOTTLES
+    }
   }
 
   Object.defineProperty(BottleNumber, registry, {
@@ -108,6 +112,7 @@ BottleNumber.register(
     constructor() {
       super(0)
       this.container = 'bottles'
+      this.pronoun = null
     }
 
     action() {
