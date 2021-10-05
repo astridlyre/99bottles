@@ -1,8 +1,13 @@
 export function capitalize(input) {
-  return input[0].toUpperCase() + input.substring(1)
+  const converted = String(input)
+  return converted[0].toUpperCase() + converted.substring(1)
 }
 
 export function* countDown(start, end) {
-  let currentCount = start
-  while (currentCount >= end) yield currentCount--
+  if (start < end) {
+    yield 0
+  } else {
+    let currentCount = start
+    while (currentCount >= end) yield currentCount--
+  }
 }
