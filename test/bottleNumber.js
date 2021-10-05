@@ -1,9 +1,18 @@
-/*eslint func-names: ["error", "never"]*/
+/* eslint func-names: ["error", "never"] */
+/* eslint no-magic-numbers: 0 */
 import { BottleNumber } from '../bottleNumber.js'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 
 describe('BottleNumber', function () {
+  describe('BottleNumber Factory Method', function () {
+    it('Returns the correct BottleNumber for a number', function () {
+      expect(BottleNumber.of(0).quantity).to.equal('no more')
+      expect(BottleNumber.of(2).container).to.equal('bottles')
+      expect(BottleNumber.of(99).quantity).to.equal('99')
+    })
+  })
+
   describe('BottleNumber Generic', function () {
     let bottleNumber
     let number
