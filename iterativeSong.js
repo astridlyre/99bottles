@@ -13,6 +13,9 @@ export const IterativeSong = (function init() {
 
   class IterativeSong {
     constructor(verse) {
+      if (!(verse.prototype instanceof IterativeSongVerse)) {
+        throw new TypeError('verse is not an instance of IterativeSongVerse')
+      }
       this[verseKey] = verse
     }
 
@@ -48,10 +51,16 @@ export const IterativeSongVerse = (function init() {
   const verseNumber = Symbol('verseNumber')
   return class IterativeSongVerse {
     constructor(number) {
+      if (!Number.isInteger(number) || number < 0) {
+        throw new Error(`Attempted to construct verse with invalid number ${number}`)
+      }
       this[verseNumber] = number
     }
 
     toString() {
+      if (typeof this.lyrics !== 'function') {
+        throw new TypeError('Subclass must implement lyrics()')
+      }
       return this.lyrics()
     }
 
@@ -61,6 +70,10 @@ export const IterativeSongVerse = (function init() {
 
     static of(number) {
       return new IterativeSongVerse(number)
+    }
+
+    static get MAX_VERSES() {
+      throw new Error('MAX_VERSES is subclass responsibility')
     }
   }
 })()

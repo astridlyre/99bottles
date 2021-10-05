@@ -19,6 +19,9 @@ export const BottleNumber = (function init() {
 
   class BottleNumber {
     constructor(number) {
+      if (!Number.isInteger(number) || number < 0) {
+        throw new TypeError(`Invalid number ${number} (must be integer greater than 0)`)
+      }
       this[numberOfBottles] = number
       this.container = 'bottles'
       this.pronoun = 'one'
@@ -43,17 +46,16 @@ export const BottleNumber = (function init() {
     }
 
     static of(number) {
-      for (const candidate of BottleNumber.registry) {
+      for (const candidate of BottleNumber[registry]) {
         if (candidate.canHandle(number)) return new candidate(number)
       }
       return new BottleNumber(number)
     }
 
-    static get registry() {
-      return BottleNumber[registry]
-    }
-
     static register(candidate) {
+      if (!(candidate.prototype instanceof BottleNumber)) {
+        throw new TypeError('candidate must be instance of BottleNumber')
+      }
       BottleNumber[registry].add(candidate)
       return candidate
     }
