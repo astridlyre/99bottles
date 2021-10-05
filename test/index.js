@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import { Bottles } from '../index.js'
+import { Bottles } from '../bottles.js'
 
 describe('Bottles', () => {
   it('the first verse', () => {
@@ -46,6 +46,20 @@ describe('Bottles', () => {
       'Go to the store and buy some more, ' +
       '99 bottles of beer on the wall.\n'
     expect(new Bottles().verse(0)).to.equal(expected)
+  })
+
+  it('verses 6 and 7', () => {
+    const expected =
+      '7 bottles of beer on the wall, ' +
+      '7 bottles of beer.\n' +
+      'Take one down and pass it around, ' +
+      '1 six-pack of beer on the wall.\n' +
+      '\n' +
+      '1 six-pack of beer on the wall, ' +
+      '1 six-pack of beer.\n' +
+      'Take it down and pass it around, ' +
+      '5 bottles of beer on the wall.\n'
+    expect(new Bottles().verses(7, 6)).to.equal(expected)
   })
 
   it('a couple verses', () => {
@@ -359,10 +373,10 @@ Take one down and pass it around, 8 bottles of beer on the wall.
 Take one down and pass it around, 7 bottles of beer on the wall.
 
 7 bottles of beer on the wall, 7 bottles of beer.
-Take one down and pass it around, 6 bottles of beer on the wall.
+Take one down and pass it around, 1 six-pack of beer on the wall.
 
-6 bottles of beer on the wall, 6 bottles of beer.
-Take one down and pass it around, 5 bottles of beer on the wall.
+1 six-pack of beer on the wall, 1 six-pack of beer.
+Take it down and pass it around, 5 bottles of beer on the wall.
 
 5 bottles of beer on the wall, 5 bottles of beer.
 Take one down and pass it around, 4 bottles of beer on the wall.
