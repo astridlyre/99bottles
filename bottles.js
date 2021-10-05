@@ -20,29 +20,29 @@ export class Bottles extends IterativeSong {
 }
 
 class BottleVerse extends IterativeSongVerse {
-  constructor(number) {
-    super(number)
-  }
-
-  lyrics() {
-    const bottleNumber = BottleNumber.of(this.number)
-    return (
-      capitalize(`${bottleNumber} of beer on the wall, `) +
-      `${bottleNumber} of beer.\n` +
-      `${bottleNumber.action()}, ` +
-      `${bottleNumber.successor()} of beer on the wall.\n`
-    )
-  }
-
-  static get MAX_VERSES() {
-    return MAX_BOTTLE_VERSES
-  }
-
   static of(number) {
     return new BottleVerse(number)
   }
 
   static lyrics(number) {
     return BottleVerse.of(number).lyrics()
+  }
+
+  static get MAX_VERSES() {
+    return MAX_BOTTLE_VERSES
+  }
+
+  constructor(number) {
+    super(number)
+    this.bottleNumber = BottleNumber.of(number)
+  }
+
+  lyrics() {
+    return (
+      capitalize(`${this.bottleNumber} of beer on the wall, `) +
+      `${this.bottleNumber} of beer.\n` +
+      `${this.bottleNumber.action()}, ` +
+      `${this.bottleNumber.successor()} of beer on the wall.\n`
+    )
   }
 }
