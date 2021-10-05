@@ -24,21 +24,21 @@ class BottleVerse extends IterativeSongVerse {
     super(number)
   }
 
-  lyrics() {
-    const currentBottle = BottleNumber.of(this.number)
-    return (
-      capitalize(`${currentBottle} of beer on the wall, `) +
-      `${currentBottle} of beer.\n` +
-      `${currentBottle.action()}, ` +
-      `${currentBottle.successor()} of beer on the wall.\n`
-    )
-  }
-
   static get MAX_VERSES() {
     return MAX_BOTTLE_VERSES
   }
 
   static of(number) {
     return new BottleVerse(number)
+  }
+
+  static lyrics(number) {
+    const bottleNumber = BottleNumber.of(number)
+    return (
+      capitalize(`${bottleNumber} of beer on the wall, `) +
+      `${bottleNumber} of beer.\n` +
+      `${bottleNumber.action()}, ` +
+      `${bottleNumber.successor()} of beer on the wall.\n`
+    )
   }
 }

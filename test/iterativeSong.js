@@ -4,8 +4,8 @@ import { describe, it } from 'mocha'
 import { expect } from 'chai'
 
 class TestVerse extends IterativeSongVerse {
-  lyrics() {
-    return `Verse number: ${this.number}; This is a test: 1, 2, 3.\n`
+  static lyrics(number) {
+    return `Verse number: ${number}; This is a test: 1, 2, 3.\n`
   }
   static get MAX_VERSES() {
     return 69 // nice

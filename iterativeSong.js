@@ -28,7 +28,7 @@ export const IterativeSong = (function init() {
     }
 
     verse(number) {
-      return this[verseKey].of(number).lyrics()
+      return this[verseKey].lyrics(number)
     }
   }
 
@@ -58,10 +58,10 @@ export const IterativeSongVerse = (function init() {
     }
 
     toString() {
-      if (typeof this.lyrics !== 'function') {
+      if (typeof this.prototype.constructor.lyrics !== 'function') {
         throw new TypeError('Subclass must implement lyrics()')
       }
-      return this.lyrics()
+      return this.prototype.constructor.lyrics(this.number)
     }
 
     get number() {
@@ -74,6 +74,10 @@ export const IterativeSongVerse = (function init() {
 
     static get MAX_VERSES() {
       throw new Error('MAX_VERSES is subclass responsibility')
+    }
+
+    static lyrics(number) {
+      return this.prototype.constructor.of(number).lyrics()
     }
   }
 })()

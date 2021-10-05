@@ -1,3 +1,4 @@
+/* eslint no-magic-numbers: [ "warn", { "ignore": [0, 1, 6] } ] */
 /* BottleNumber
  *
  * @params number: number (of Bottles)
@@ -66,6 +67,10 @@ export const BottleNumber = (function init() {
 
     static get MAX_BOTTLES() {
       return MAX_BOTTLES
+    }
+
+    static canHandle() {
+      throw new Error(`Subclass must implement canHandle()`)
     }
   }
 
